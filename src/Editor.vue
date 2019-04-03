@@ -39,6 +39,9 @@ export default {
 
     this.editor = new EditorJS({
       holderId : 'codex-editor',
+      autofocus: true,
+      onReady: () => { this.$emit('ready') },
+      onChange: () => { this.$emit('change') },
       tools: {
         header: {
           class: Header

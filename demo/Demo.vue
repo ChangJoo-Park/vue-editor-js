@@ -3,6 +3,8 @@
     <button @click="trySave">Submit</button>
     <editor
       @save="save"
+      @ready="onReady"
+      @change="onChange"
       save-button-id="save-button"
     />
   </div>
@@ -17,6 +19,12 @@ export default {
     },
     save (response) {
       console.log(response)
+    },
+    onReady () {
+      console.log('ready')
+    },
+    onChange () {
+      console.log('changed')
     }
   }
 }
