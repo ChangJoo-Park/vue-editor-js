@@ -2,6 +2,7 @@
   <div class="demo">
     <h1>Plugin Demo</h1>
     <p>add: {{ a }} + {{ b }} = {{ $add(a, b) }}</p>
+    <editor />
   </div>
 </template>
 

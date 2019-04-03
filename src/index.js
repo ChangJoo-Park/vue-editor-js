@@ -1,4 +1,5 @@
 const version = '__VERSION__'
+import Editor from './Editor.vue'
 
 const install = Vue => {
   /*
@@ -9,6 +10,8 @@ const install = Vue => {
   Vue.prototype.$add = (a, b) => {
     return a + b
   }
+
+  Vue.component('Editor', Editor)
 
   /*
    * NOTE:
