@@ -24,6 +24,7 @@ export default {
     const Delimiter = require('@editorjs/delimiter')
     const Qoute = require('@editorjs/quote')
     const ImageTool = require('@editorjs/image')
+    const Warning = require('codex.editor.warning')
 
     this.editor = new EditorJS({
       holderId : 'codex-editor',
@@ -60,6 +61,12 @@ export default {
         },
         table: {
           class: Table
+        },
+        warning: {
+          class: Warning
+        },
+        inlineCode: {
+          class: InlineCode
         }
       }
     })
