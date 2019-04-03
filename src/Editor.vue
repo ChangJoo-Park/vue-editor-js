@@ -57,6 +57,9 @@ export default {
         },
         raw: {
           class: Raw
+        },
+        table: {
+          class: Table
         }
       }
     })
