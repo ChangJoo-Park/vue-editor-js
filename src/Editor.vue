@@ -1,9 +1,8 @@
 <template>
   <div id="vue-editor-js">
-    <div id="codex-editor"></div>
+    <div :id="holderId"/>
     <button :id="saveButtonId" @click="save" style="display: none;">Save</button>
   </div>
-
 </template>
 
 <script>
@@ -12,9 +11,25 @@ import EditorJS from '@editorjs/editorjs'
 export default {
   name: 'vue-editor-js',
   props: {
+    holderId: {
+      type: String,
+      default: () => 'codex-editor',
+      required: false
+    },
     saveButtonId: {
       type: String,
-      default: () => 'save-button'
+      default: () => 'save-button',
+      required: false
+    },
+    autofocus: {
+      type: Boolean,
+      default: () => false,
+      required: false
+    },
+    initData: {
+      type: Object,
+      default: () => {},
+      required: false
     }
   },
   data () {
@@ -38,10 +53,11 @@ export default {
     const Warning = require('codex.editor.warning')
 
     this.editor = new EditorJS({
-      holderId : 'codex-editor',
-      autofocus: true,
+      holderId : this.holderId,
+      autofocus: this.autofocus,
       onReady: () => { this.$emit('ready') },
       onChange: () => { this.$emit('change') },
+      data: this.initData,
       tools: {
         header: {
           class: Header
