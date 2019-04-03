@@ -1,17 +1,28 @@
 <template>
-  <div id="codex-editor"></div>
+  <div id="vue-editor-js">
+    <div id="codex-editor"></div>
+    <button :id="saveButtonId" @click="save" style="display: none;">Save</button>
+  </div>
+
 </template>
 
 <script>
 import EditorJS from '@editorjs/editorjs'
+
 export default {
+  name: 'vue-editor-js',
+  props: {
+    saveButtonId: {
+      type: String,
+      default: () => 'save-button'
+    }
+  },
   data () {
     return {
       editor: null
     }
   },
   mounted () {
-    console.log('mounted')
     const Header = require('@editorjs/header')
     const List = require('@editorjs/list')
     const Code = require('@editorjs/code')
@@ -70,6 +81,12 @@ export default {
         }
       }
     })
+  },
+  methods: {
+    async save () {
+      const response = await this.editor.save()
+      this.$emit('save', response)
+    }
   }
 }
 </script>
