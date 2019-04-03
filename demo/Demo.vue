@@ -2,23 +2,32 @@
   <div class="demo">
     <button @click="trySave">Submit</button>
     <editor
+      autofocus
+      holder-id="codex-editor"
+      save-button-id="save-button"
+      :init-data="initData"
       @save="save"
       @ready="onReady"
       @change="onChange"
-      save-button-id="save-button"
     />
   </div>
 </template>
 
 <script>
+
 export default {
+  data () {
+    return {
+      initData: {}
+    }
+  },
   name: 'demo',
   methods: {
     trySave () {
       this.$el.querySelector('#save-button').click()
     },
     save (response) {
-      console.log(response)
+      console.log(JSON.stringify(response))
     },
     onReady () {
       console.log('ready')
