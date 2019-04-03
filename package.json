@@ -1,15 +1,29 @@
 {
   "name": "vue-editor-js",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "demo": "vue-cli-service demo",
+    "docs": "npm run docs:serve",
+    "docs:build": "vue-cli-service docs --mode build",
+    "docs:serve": "vue-cli-service docs --mode serve",
+    "prepublish": "vue-cli-service lint && vue-cli-service docs --mode build && vue-cli-service build",
+    "start": "vue-cli-service serve"
   },
+  "main": "dist/vue-editor-js.common.js",
+  "module": "dist/vue-editor-js.esm.js",
+  "unpkg": "dist/vue-editor-js.umd.min.js",
+  "files": [
+    "dist/vue-editor-js.common.js",
+    "dist/vue-editor-js.umd.min.js",
+    "dist/vue-editor-js.umd.js",
+    "dist/vue-editor-js.esm.js",
+    "src"
+  ],
   "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.6"
+    "core-js": "^2.6.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
@@ -18,6 +32,10 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
-  }
+    "vue-cli-plugin-p11n": "^0.2.1",
+    "vue-template-compiler": "^2.5.21",
+    "vue": "^2.6.6"
+  },
+  "jsdelivr": "dist/vue-editor-js.umd.min.js",
+  "sideeffects": false
 }
