@@ -8,8 +8,6 @@
       @save="onSave"
       @ready="onReady"
       @change="onChange"
-      :header="true"
-      :paragraph="true"
     />
   </div>
 </template>
