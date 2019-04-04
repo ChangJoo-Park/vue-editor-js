@@ -14,7 +14,7 @@
 
 <script>
 // Import as component
-import { Editor } from '../src'
+import { Editor } from '../src' // import { Editor } from 'vue-editor-js'
 
 export default {
   components: {
