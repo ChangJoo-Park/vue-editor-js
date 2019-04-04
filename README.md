@@ -57,7 +57,7 @@ import { Editor } from 'vue-editor-js'
 
 export default {
   components: {
-    Editor: Editor,
+    Editor,
   }
 }
 // ...

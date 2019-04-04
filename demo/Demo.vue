@@ -18,7 +18,7 @@ import { Editor } from '../src' // import { Editor } from 'vue-editor-js'
 
 export default {
   components: {
-    Editor: Editor,
+    Editor,
   },
   data () {
     return {
