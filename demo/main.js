@@ -1,8 +1,9 @@
 import Vue from 'vue'
-import App from '~entry'
-import plugin from '../src/index'
+import App from './Demo'
 
-Vue.use(plugin)
+// Use it as Plugin
+// import Editor from '../src'
+// Vue.use(Editor)
 
 Vue.config.productionTip = false
 

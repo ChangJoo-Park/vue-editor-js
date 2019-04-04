@@ -1,31 +1,37 @@
 <template>
   <div class="demo">
-    <button @click="trySave">Submit</button>
+    <button @click="save">Submit</button>
     <editor
       autofocus
-      holder-id="codex-editor"
       :init-data="initData"
-      @save="save"
+      ref="editor"
+      @save="onSave"
       @ready="onReady"
       @change="onChange"
+      :header="true"
+      :paragraph="true"
     />
   </div>
 </template>
 
 <script>
+// Import as component
+import Editor from '../src/Editor'
 
 export default {
+  components: {
+    Editor: Editor,
+  },
   data () {
     return {
       initData: {}
     }
   },
-  name: 'demo',
   methods: {
-    trySave () {
-      this.$el.querySelector('#save-button').click()
+    save () {
+      this.$refs.editor.save();
     },
-    save (response) {
+    onSave (response) {
       console.log(JSON.stringify(response))
     },
     onReady () {
