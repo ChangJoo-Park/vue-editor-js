@@ -44,5 +44,8 @@ Vue.use(Editor)
   />
 ```
 
-Enjoy editorjs in Vue.js :tada:
+Enjoy editorjs with Vue.js Project :tada:
+
+## Contribute
+
 
