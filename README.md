@@ -50,6 +50,19 @@ Vue.use(Editor)
 // ...
 ```
 
+```js
+// In component
+// ...
+import Editor from 'vue-editor-js/editor'
+
+export default {
+  components: {
+    Editor: Editor,
+  }
+}
+// ...
+```
+
 ```Vue
   <editor
     autofocus
