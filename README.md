@@ -64,6 +64,16 @@ Vue.use(Editor)
 
 Enjoy editorjs with Vue.js Project :tada:
 
-## Contribute
+## How to Contribute?
+
+1. fork this project.
+2. edit code.
+3. PR
+
+_OR_
+
+1. Just submit a issue!
+
+## Contributors
 
 - ChangJoo Park[pcjpcj2@gmail.com]
