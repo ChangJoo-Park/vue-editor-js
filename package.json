@@ -38,7 +38,6 @@
     "src"
   ],
   "dependencies": {
-    "core-js": "^2.6.5",
     "@editorjs/code": "^2.4.1",
     "@editorjs/delimiter": "^1.1.0",
     "@editorjs/editorjs": "^2.12.3",
@@ -52,7 +51,8 @@
     "@editorjs/quote": "^2.2.0",
     "@editorjs/raw": "^2.1.1",
     "@editorjs/table": "^1.2.0",
-    "codex.editor.warning": "^1.0.0"
+    "@editorjs/warning": "^1.1.0",
+    "core-js": "^2.6.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

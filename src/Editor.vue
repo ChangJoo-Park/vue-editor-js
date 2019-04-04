@@ -21,7 +21,7 @@ const PLUGINS = {
   delimiter: require('@editorjs/delimiter'),
   raw: require('@editorjs/raw'),
   table: require('@editorjs/table'),
-  warning: require('codex.editor.warning')
+  warning: require('@editorjs/warning')
 }
 
 const PLUGIN_PROPS_TYPE = {
