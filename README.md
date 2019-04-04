@@ -6,11 +6,11 @@ Please see this first. https://editorjs.io/
 
 ## Todo
 
+- [ ] Sanitize data
+- [ ] Documentation
 - [x] Conditionally import plugins
 - [x] Can more specific options for plugin (Image plugin is not working in current :<)
-- [ ] Sanitize data
-- [ ] Custom Plugin
-- [ ] Documentation
+- [x] Custom Plugin - Thanks @yashha
 
 ## Supported Plugins
 
@@ -92,4 +92,5 @@ _OR_
 
 ## Contributors
 
-- ChangJoo Park[pcjpcj2@gmail.com]
+- [ChangJoo Park][https://github.com/changjoo-park]
+- [yashha](https://github.com/yashha)
