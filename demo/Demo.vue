@@ -4,7 +4,6 @@
     <editor
       autofocus
       holder-id="codex-editor"
-      save-button-id="save-button"
       :init-data="initData"
       @save="save"
       @ready="onReady"
