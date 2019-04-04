@@ -21,7 +21,9 @@ const PLUGINS = {
   delimiter: require('@editorjs/delimiter'),
   raw: require('@editorjs/raw'),
   table: require('@editorjs/table'),
-  warning: require('@editorjs/warning')
+  warning: require('@editorjs/warning'),
+  paragraph: require('@editorjs/paragraph'),
+  checklist: require('@editorjs/checklist')
 }
 
 const PLUGIN_PROPS_TYPE = {
@@ -63,7 +65,9 @@ export default {
     delimiter: PLUGIN_PROPS_TYPE,
     quote: PLUGIN_PROPS_TYPE,
     image: PLUGIN_PROPS_TYPE,
-    warning: PLUGIN_PROPS_TYPE
+    warning: PLUGIN_PROPS_TYPE,
+    paragraph: PLUGIN_PROPS_TYPE,
+    checklist: PLUGIN_PROPS_TYPE
   },
   data () {
     return {

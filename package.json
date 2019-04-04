@@ -38,6 +38,7 @@
     "src"
   ],
   "dependencies": {
+    "@editorjs/checklist": "^1.1.0",
     "@editorjs/code": "^2.4.1",
     "@editorjs/delimiter": "^1.1.0",
     "@editorjs/editorjs": "^2.12.3",
@@ -48,6 +49,7 @@
     "@editorjs/link": "^2.1.2",
     "@editorjs/list": "^1.3.2",
     "@editorjs/marker": "^1.2.0",
+    "@editorjs/paragraph": "^2.5.0",
     "@editorjs/quote": "^2.2.0",
     "@editorjs/raw": "^2.1.1",
     "@editorjs/table": "^1.2.0",
