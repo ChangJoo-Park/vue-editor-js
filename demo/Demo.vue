@@ -2,7 +2,7 @@
   <div class="demo">
     <button @click="save">Submit</button>
     <editor
-      autofocus
+      :autofocus="true"
       :init-data="initData"
       ref="editor"
       @save="onSave"
