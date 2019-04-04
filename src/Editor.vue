@@ -1,7 +1,7 @@
 <template>
   <div id="vue-editor-js">
     <div :id="holderId"/>
-    <button :id="saveButtonId" @click="save" style="display: none;">Save</button>
+    <button :id="`${holderId}-button`" @click="save" style="display: none;"/>
   </div>
 </template>
 
@@ -24,17 +24,18 @@ const PLUGINS = {
   warning: require('codex.editor.warning')
 }
 
+const PLUGIN_PROPS_TYPE = {
+  type: [Boolean, Object],
+  default: () => false,
+  required: false
+}
+
 export default {
   name: 'vue-editor-js',
   props: {
     holderId: {
       type: String,
       default: () => 'codex-editor',
-      required: false
-    },
-    saveButtonId: {
-      type: String,
-      default: () => 'save-button',
       required: false
     },
     autofocus: {
@@ -50,71 +51,19 @@ export default {
     /**
      * Plugins
      */
-    header: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    list: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    code: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    inlineCode: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    embed: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    link: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    marker: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    table: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    raw: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    delimiter: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    qoute: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    imageTool: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    },
-    warning: {
-      type: [Boolean, Object],
-      default: () => false,
-      required: false
-    }
+    header: PLUGIN_PROPS_TYPE,
+    list: PLUGIN_PROPS_TYPE,
+    code: PLUGIN_PROPS_TYPE,
+    inlineCode: PLUGIN_PROPS_TYPE,
+    embed: PLUGIN_PROPS_TYPE,
+    link: PLUGIN_PROPS_TYPE,
+    marker: PLUGIN_PROPS_TYPE,
+    table: PLUGIN_PROPS_TYPE,
+    raw: PLUGIN_PROPS_TYPE,
+    delimiter: PLUGIN_PROPS_TYPE,
+    quote: PLUGIN_PROPS_TYPE,
+    image: PLUGIN_PROPS_TYPE,
+    warning: PLUGIN_PROPS_TYPE
   },
   data () {
     return {
@@ -137,15 +86,33 @@ export default {
       this.$emit('save', response)
     },
     getTools () {
-      const plugins = ['header', 'list', 'code', 'inlineCode', 'embed', 'link', 'marker', 'table', 'raw', 'delimiter', 'qoute', 'imageTool', 'warning']
-      const isFullyFeatured = plugins.every(p => !this[p])
+      const pluginKeys = Object.keys(PLUGINS)
+      const isFullyFeatured = pluginKeys.every(p => !this[p])
+      const tools = {}
+
+      /**
+       * When plugin props are empty, enable all plugins
+       */
       if (isFullyFeatured) {
-        const tools = {}
-        Object.keys(PLUGINS).forEach(key => tools[key] = { class: PLUGINS[key] })
+        pluginKeys.forEach(key => tools[key] = { class: PLUGINS[key] })
         return tools
-      } else {
-        // TODO: only implement user needed
       }
+
+      pluginKeys.forEach(key => {
+        const props = this.$props[key]
+        if (!props) {
+          return
+        }
+
+        tools[key] = { class: PLUGINS[key] }
+
+        if (typeof props === 'object') {
+          const options = Object.assign({}, this.$props[key])
+          delete options['class'] // Prevent merge wrong `class`
+          tools[key] = Object.assign(tools[key], options)
+        }
+      })
+      return tools
     }
   }
 }
