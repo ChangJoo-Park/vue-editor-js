@@ -75,6 +75,9 @@ export default {
   />
 ```
 
+### Other props:
+- customTools - Object with name (key) and class of a custom tool (value)
+
 Enjoy editorjs with Vue.js Project :tada:
 
 ## How to Contribute?

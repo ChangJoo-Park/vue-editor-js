@@ -50,6 +50,11 @@ export default {
       default: () => {},
       required: false
     },
+    customTools: {
+      type: Object,
+      default: () => {},
+      required: false
+    },
     /**
      * Plugins
      */
@@ -92,7 +97,9 @@ export default {
     getTools () {
       const pluginKeys = Object.keys(PLUGINS)
       const isFullyFeatured = pluginKeys.every(p => !this[p])
-      const tools = {}
+      const tools = {
+        ...this.customTools
+      }
 
       /**
        * When plugin props are empty, enable all plugins
