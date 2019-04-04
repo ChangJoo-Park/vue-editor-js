@@ -8,6 +8,22 @@
 <script>
 import EditorJS from '@editorjs/editorjs'
 
+const PLUGINS = {
+  header: require('@editorjs/header'),
+  list: require('@editorjs/list'),
+  image: require('@editorjs/image'),
+  inlineCode: require('@editorjs/inline-code'),
+  embed: require('@editorjs/embed'),
+  quote: require('@editorjs/quote'),
+  marker: require('@editorjs/marker'),
+  code: require('@editorjs/code'),
+  link: require('@editorjs/link'),
+  delimiter: require('@editorjs/delimiter'),
+  raw: require('@editorjs/raw'),
+  table: require('@editorjs/table'),
+  warning: require('codex.editor.warning')
+}
+
 export default {
   name: 'vue-editor-js',
   props: {
@@ -124,47 +140,9 @@ export default {
       const plugins = ['header', 'list', 'code', 'inlineCode', 'embed', 'link', 'marker', 'table', 'raw', 'delimiter', 'qoute', 'imageTool', 'warning']
       const isFullyFeatured = plugins.every(p => !this[p])
       if (isFullyFeatured) {
-        return {
-            header: {
-              class: require('@editorjs/header')
-            },
-            list: {
-              class: require('@editorjs/list')
-            },
-            image: {
-              class: require('@editorjs/image')
-            },
-            inlineCode: {
-              class: require('@editorjs/inline-code')
-            },
-            embed: {
-              class: require('@editorjs/embed')
-            },
-            quote: {
-              class: require('@editorjs/quote')
-            },
-            marker: {
-              class: require('@editorjs/marker')
-            },
-            code: {
-              class: require('@editorjs/code')
-            },
-            link: {
-              class: require('@editorjs/link')
-            },
-            delimiter: {
-              class: require('@editorjs/delimiter')
-            },
-            raw: {
-              class: require('@editorjs/raw')
-            },
-            table: {
-              class: require('@editorjs/table')
-            },
-            warning: {
-              class: require('codex.editor.warning')
-            }
-          }
+        const tools = {}
+        Object.keys(PLUGINS).forEach(key => tools[key] = { class: PLUGINS[key] })
+        return tools
       } else {
         // TODO: only implement user needed
       }
