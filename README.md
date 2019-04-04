@@ -6,11 +6,29 @@ Please see this first. https://editorjs.io/
 
 ## Todo
 
-- [ ] Conditionally import plugins
-- [ ] Can more specific options for plugin (Image plugin is not working in current :<)
-  - [ ] Shortcut
-  - [ ] Inline or not
+- [x] Conditionally import plugins
+- [x] Can more specific options for plugin (Image plugin is not working in current :<)
 - [ ] Sanitize data
+- [ ] Custom Plugin
+- [ ] Documentation
+
+## Supported Plugins
+
+- [Header](https://github.com/editor-js/header)
+- [List](https://github.com/editor-js/list)
+- [Image](https://github.com/editor-js/image)
+- [InlineCode](https://github.com/editor-js/inline-code)
+- [Embed](https://github.com/editor-js/embed)
+- [Quote](https://github.com/editor-js/quote)
+- [Marker](https://github.com/editor-js/marker)
+- [Code](https://github.com/editor-js/code)
+- [Link](https://github.com/editor-js/link)
+- [Delimiter](https://github.com/editor-js/delimiter)
+- [Raw](https://github.com/editor-js/raw)
+- [Table](https://github.com/editor-js/table)
+- [Warning](https://github.com/editor-js/warning)
+- [Paragraph](https://github.com/editor-js/paragraph)
+- [Checklist](https://github.com/editor-js/checklist)
 
 ## Installation
 
@@ -48,4 +66,4 @@ Enjoy editorjs with Vue.js Project :tada:
 
 ## Contribute
 
-
+- ChangJoo Park[pcjpcj2@gmail.com]
