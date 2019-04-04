@@ -50,6 +50,19 @@ Vue.use(Editor)
 // ...
 ```
 
+```js
+// In component
+// ...
+import { Editor } from 'vue-editor-js'
+
+export default {
+  components: {
+    Editor,
+  }
+}
+// ...
+```
+
 ```Vue
   <editor
     autofocus
@@ -61,6 +74,9 @@ Vue.use(Editor)
     @change="onChange"
   />
 ```
+
+### Other props:
+- customTools - Object with name (key) and class of a custom tool (value)
 
 Enjoy editorjs with Vue.js Project :tada:
 

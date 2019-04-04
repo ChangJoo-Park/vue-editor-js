@@ -1,11 +1,11 @@
 <template>
   <div class="demo">
-    <button @click="trySave">Submit</button>
+    <button @click="save">Submit</button>
     <editor
-      autofocus
-      holder-id="codex-editor"
+      :autofocus="true"
       :init-data="initData"
-      @save="save"
+      ref="editor"
+      @save="onSave"
       @ready="onReady"
       @change="onChange"
     />
@@ -13,19 +13,23 @@
 </template>
 
 <script>
+// Import as component
+import { Editor } from '../src' // import { Editor } from 'vue-editor-js'
 
 export default {
+  components: {
+    Editor,
+  },
   data () {
     return {
       initData: {}
     }
   },
-  name: 'demo',
   methods: {
-    trySave () {
-      this.$el.querySelector('#save-button').click()
+    save () {
+      this.$refs.editor.save();
     },
-    save (response) {
+    onSave (response) {
       console.log(JSON.stringify(response))
     },
     onReady () {
