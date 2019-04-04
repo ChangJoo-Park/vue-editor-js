@@ -30,6 +30,74 @@ export default {
       type: Object,
       default: () => {},
       required: false
+    },
+    /**
+     * Plugins
+     */
+    header: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    list: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    code: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    inlineCode: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    embed: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    link: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    marker: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    table: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    raw: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    delimiter: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    qoute: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    imageTool: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
+    },
+    warning: {
+      type: [Boolean, Object],
+      default: () => false,
+      required: false
     }
   },
   data () {
@@ -38,73 +106,68 @@ export default {
     }
   },
   mounted () {
-    const Header = require('@editorjs/header')
-    const List = require('@editorjs/list')
-    const Code = require('@editorjs/code')
-    const InlineCode = require('@editorjs/inline-code')
-    const Embed = require('@editorjs/embed')
-    const Link = require('@editorjs/link')
-    const Marker = require('@editorjs/marker')
-    const Table = require('@editorjs/table')
-    const Raw = require('@editorjs/raw')
-    const Delimiter = require('@editorjs/delimiter')
-    const Qoute = require('@editorjs/quote')
-    const ImageTool = require('@editorjs/image')
-    const Warning = require('codex.editor.warning')
-
     this.editor = new EditorJS({
       holderId : this.holderId,
       autofocus: this.autofocus,
       onReady: () => { this.$emit('ready') },
       onChange: () => { this.$emit('change') },
       data: this.initData,
-      tools: {
-        header: {
-          class: Header
-        },
-        list: {
-          class: List
-        },
-        image: {
-          class: ImageTool
-        },
-        embed: {
-          class: Embed
-        },
-        quote: {
-          class: Qoute
-        },
-        marker: {
-          class: Marker
-        },
-        code: {
-          class: Code
-        },
-        link: {
-          class: Link
-        },
-        delimiter: {
-          class: Delimiter
-        },
-        raw: {
-          class: Raw
-        },
-        table: {
-          class: Table
-        },
-        warning: {
-          class: Warning
-        },
-        inlineCode: {
-          class: InlineCode
-        }
-      }
+      tools: this.getTools()
     })
   },
   methods: {
     async save () {
       const response = await this.editor.save()
       this.$emit('save', response)
+    },
+    getTools () {
+      const plugins = ['header', 'list', 'code', 'inlineCode', 'embed', 'link', 'marker', 'table', 'raw', 'delimiter', 'qoute', 'imageTool', 'warning']
+      const isFullyFeatured = plugins.every(p => !this[p])
+      if (isFullyFeatured) {
+        return {
+            header: {
+              class: require('@editorjs/header')
+            },
+            list: {
+              class: require('@editorjs/list')
+            },
+            image: {
+              class: require('@editorjs/image')
+            },
+            inlineCode: {
+              class: require('@editorjs/inline-code')
+            },
+            embed: {
+              class: require('@editorjs/embed')
+            },
+            quote: {
+              class: require('@editorjs/quote')
+            },
+            marker: {
+              class: require('@editorjs/marker')
+            },
+            code: {
+              class: require('@editorjs/code')
+            },
+            link: {
+              class: require('@editorjs/link')
+            },
+            delimiter: {
+              class: require('@editorjs/delimiter')
+            },
+            raw: {
+              class: require('@editorjs/raw')
+            },
+            table: {
+              class: require('@editorjs/table')
+            },
+            warning: {
+              class: require('codex.editor.warning')
+            }
+          }
+      } else {
+        // TODO: only implement user needed
+      }
     }
   }
 }
