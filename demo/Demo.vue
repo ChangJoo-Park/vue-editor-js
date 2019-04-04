@@ -16,7 +16,7 @@
 
 <script>
 // Import as component
-import Editor from '../src/Editor'
+import { Editor } from '../src'
 
 export default {
   components: {

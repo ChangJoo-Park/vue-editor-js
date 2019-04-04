@@ -1,17 +1,27 @@
 const version = '__VERSION__'
-import Editor from './Editor.vue'
+import EditorComponent from './Editor.vue'
 
-const install = Vue => {
-  Vue.component('Editor', Editor)
+export function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component('Editor', EditorComponent);
 }
 
 const plugin = {
   install,
   version
+};
+
+export const Editor = EditorComponent;
+
+let GlobalVue = null;
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin);
 }
 
-export default plugin
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(plugin)
-}
+export default plugin;

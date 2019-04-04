@@ -53,7 +53,7 @@ Vue.use(Editor)
 ```js
 // In component
 // ...
-import Editor from 'vue-editor-js/editor'
+import { Editor } from 'vue-editor-js'
 
 export default {
   components: {
