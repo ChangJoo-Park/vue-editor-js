@@ -75,6 +75,28 @@ export default {
   />
 ```
 
+---
+
+```js
+// on Nuxt.js
+
+// in nuxt.config.js
+plugins: [
+  {
+    src: '~/plugins/vue-editor.js', ssr: false
+  }
+],
+
+// in ~/plugins/vue-editor.js
+import Vue from 'vue'
+import Editor from 'vue-editor-js'
+
+Vue.use(Editor)
+
+// in your page
+<editor />
+```
+
 ### Other props:
 - customTools - Object with name (key) and class of a custom tool (value)
 
