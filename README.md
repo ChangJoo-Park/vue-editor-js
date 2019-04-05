@@ -92,5 +92,5 @@ _OR_
 
 ## Contributors
 
-- [ChangJoo Park][https://github.com/changjoo-park]
+- [ChangJoo Park](https://github.com/changjoo-park)
 - [yashha](https://github.com/yashha)
