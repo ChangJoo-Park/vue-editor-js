@@ -95,7 +95,10 @@ Vue.use(Editor)
 
 // in your page
 <editor />
+
 ```
+
+If you confuse, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
 ### Other props:
 - customTools - Object with name (key) and class of a custom tool (value)
