@@ -44,7 +44,7 @@
     "@editorjs/editorjs": "^2.12.3",
     "@editorjs/embed": "^2.2.0",
     "@editorjs/header": "^2.2.3",
-    "@editorjs/image": "^2.2.0",
+    "@editorjs/image": "^2.3.0",
     "@editorjs/inline-code": "^1.3.0",
     "@editorjs/link": "^2.1.2",
     "@editorjs/list": "^1.3.2",
