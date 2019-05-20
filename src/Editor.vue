@@ -80,16 +80,22 @@ export default {
     }
   },
   mounted () {
-    this.editor = new EditorJS({
-      holderId : this.holderId,
-      autofocus: this.autofocus,
-      onReady: () => { this.$emit('ready') },
-      onChange: () => { this.$emit('change') },
-      data: this.initData,
-      tools: this.getTools()
-    })
+    this.initEditor();
   },
   methods: {
+    initEditor () {
+      if (this.editor) {
+        this.editor.destroy();
+      }
+      this.editor = new EditorJS({
+        holder : this.holderId,
+        autofocus: this.autofocus,
+        onReady: () => { this.$emit('ready') },
+        onChange: () => { this.$emit('change') },
+        data: this.initData,
+        tools: this.getTools()
+      })
+    },
     async save () {
       const response = await this.editor.save()
       this.$emit('save', response)
@@ -124,6 +130,11 @@ export default {
         }
       })
       return tools
+    }
+  },
+  watch: {
+    initData: function(newVal, oldVal) {
+      this.initEditor();
     }
   }
 }

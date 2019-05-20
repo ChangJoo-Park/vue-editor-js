@@ -1,6 +1,7 @@
 <template>
   <div class="demo">
     <button @click="save">Submit</button>
+    <button @click="loadData">Load</button>
     <editor
       :autofocus="true"
       :init-data="initData"
@@ -28,6 +29,9 @@ export default {
   methods: {
     save () {
       this.$refs.editor.save();
+    },
+    loadData () {
+      this.initData = JSON.parse('{"time":1558356864490,"blocks":[{"type":"paragraph","data":{"text":"First text"}},{"type":"paragraph","data":{"text":"Second text"}}],"version":"2.12.3"}');
     },
     onSave (response) {
       console.log(JSON.stringify(response))
