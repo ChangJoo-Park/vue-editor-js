@@ -133,7 +133,7 @@ export default {
     }
   },
   watch: {
-    initData: () => {
+    initData: function () {
       this.initEditor();
     }
   }
