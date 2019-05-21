@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 public
+dist/*.js
 dist/*.gz
 dist/*.map
 coverage
@@ -23,4 +24,3 @@ docs/.vuepress/dist
 *.njsproj
 *.sln
 *.sw*
-dist
