@@ -1,5 +1,5 @@
 /*!
- * vue-editor-js v0.0.3 
+ * vue-editor-js v0.3.0 
  * (c) 2019 ChangJoo Park<pcjpcj2@gmail.com>
  * Released under the MIT License.
  */
@@ -51,6 +51,40 @@ function _asyncToGenerator(fn) {
       _next(undefined);
     });
   };
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
 }
 
 function unwrapExports (x) {
@@ -12587,6 +12621,30 @@ var editor = createCommonjsModule(function (module, exports) {
 var EditorJS = unwrapExports(editor);
 var editor_1 = editor.EditorJS;
 
+var PLUGINS = {
+  header: require('@editorjs/header'),
+  list: require('@editorjs/list'),
+  image: require('@editorjs/image'),
+  inlineCode: require('@editorjs/inline-code'),
+  embed: require('@editorjs/embed'),
+  quote: require('@editorjs/quote'),
+  marker: require('@editorjs/marker'),
+  code: require('@editorjs/code'),
+  link: require('@editorjs/link'),
+  delimiter: require('@editorjs/delimiter'),
+  raw: require('@editorjs/raw'),
+  table: require('@editorjs/table'),
+  warning: require('@editorjs/warning'),
+  paragraph: require('@editorjs/paragraph'),
+  checklist: require('@editorjs/checklist')
+};
+var PLUGIN_PROPS_TYPE = {
+  type: [Boolean, Object],
+  default: function _default() {
+    return false;
+  },
+  required: false
+};
 var script = {
   name: 'vue-editor-js',
   props: {
@@ -12594,13 +12652,6 @@ var script = {
       type: String,
       default: function _default() {
         return 'codex-editor';
-      },
-      required: false
-    },
-    saveButtonId: {
-      type: String,
-      default: function _default() {
-        return 'save-button';
       },
       required: false
     },
@@ -12615,7 +12666,31 @@ var script = {
       type: Object,
       default: function _default() {},
       required: false
-    }
+    },
+    customTools: {
+      type: Object,
+      default: function _default() {},
+      required: false
+    },
+
+    /**
+     * Plugins
+     */
+    header: PLUGIN_PROPS_TYPE,
+    list: PLUGIN_PROPS_TYPE,
+    code: PLUGIN_PROPS_TYPE,
+    inlineCode: PLUGIN_PROPS_TYPE,
+    embed: PLUGIN_PROPS_TYPE,
+    link: PLUGIN_PROPS_TYPE,
+    marker: PLUGIN_PROPS_TYPE,
+    table: PLUGIN_PROPS_TYPE,
+    raw: PLUGIN_PROPS_TYPE,
+    delimiter: PLUGIN_PROPS_TYPE,
+    quote: PLUGIN_PROPS_TYPE,
+    image: PLUGIN_PROPS_TYPE,
+    warning: PLUGIN_PROPS_TYPE,
+    paragraph: PLUGIN_PROPS_TYPE,
+    checklist: PLUGIN_PROPS_TYPE
   },
   data: function data() {
     return {
@@ -12623,88 +12698,29 @@ var script = {
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    var Header = require('@editorjs/header');
-
-    var List = require('@editorjs/list');
-
-    var Code = require('@editorjs/code');
-
-    var InlineCode = require('@editorjs/inline-code');
-
-    var Embed = require('@editorjs/embed');
-
-    var Link = require('@editorjs/link');
-
-    var Marker = require('@editorjs/marker');
-
-    var Table = require('@editorjs/table');
-
-    var Raw = require('@editorjs/raw');
-
-    var Delimiter = require('@editorjs/delimiter');
-
-    var Qoute = require('@editorjs/quote');
-
-    var ImageTool = require('@editorjs/image');
-
-    var Warning = require('codex.editor.warning');
-
-    this.editor = new EditorJS({
-      holderId: this.holderId,
-      autofocus: this.autofocus,
-      onReady: function onReady() {
-        _this.$emit('ready');
-      },
-      onChange: function onChange() {
-        _this.$emit('change');
-      },
-      data: this.initData,
-      tools: {
-        header: {
-          class: Header
-        },
-        list: {
-          class: List
-        },
-        image: {
-          class: ImageTool
-        },
-        embed: {
-          class: Embed
-        },
-        quote: {
-          class: Qoute
-        },
-        marker: {
-          class: Marker
-        },
-        code: {
-          class: Code
-        },
-        link: {
-          class: Link
-        },
-        delimiter: {
-          class: Delimiter
-        },
-        raw: {
-          class: Raw
-        },
-        table: {
-          class: Table
-        },
-        warning: {
-          class: Warning
-        },
-        inlineCode: {
-          class: InlineCode
-        }
-      }
-    });
+    this.initEditor();
   },
   methods: {
+    initEditor: function initEditor() {
+      var _this = this;
+
+      if (this.editor) {
+        this.editor.destroy();
+      }
+
+      this.editor = new EditorJS({
+        holder: this.holderId,
+        autofocus: this.autofocus,
+        onReady: function onReady() {
+          _this.$emit('ready');
+        },
+        onChange: function onChange() {
+          _this.$emit('change');
+        },
+        data: this.initData,
+        tools: this.getTools()
+      });
+    },
     save: function () {
       var _save = _asyncToGenerator(
       /*#__PURE__*/
@@ -12734,7 +12750,55 @@ var script = {
       }
 
       return save;
-    }()
+    }(),
+    getTools: function getTools() {
+      var _this2 = this;
+
+      var pluginKeys = Object.keys(PLUGINS);
+      var isFullyFeatured = pluginKeys.every(function (p) {
+        return !_this2[p];
+      });
+
+      var tools = _objectSpread({}, this.customTools);
+      /**
+       * When plugin props are empty, enable all plugins
+       */
+
+
+      if (isFullyFeatured) {
+        pluginKeys.forEach(function (key) {
+          return tools[key] = {
+            class: PLUGINS[key]
+          };
+        });
+        return tools;
+      }
+
+      pluginKeys.forEach(function (key) {
+        var props = _this2.$props[key];
+
+        if (!props) {
+          return;
+        }
+
+        tools[key] = {
+          class: PLUGINS[key]
+        };
+
+        if (_typeof(props) === 'object') {
+          var options = Object.assign({}, _this2.$props[key]);
+          delete options['class']; // Prevent merge wrong `class`
+
+          tools[key] = Object.assign(tools[key], options);
+        }
+      });
+      return tools;
+    }
+  },
+  watch: {
+    initData: function initData() {
+      this.initEditor();
+    }
   }
 };
 
@@ -12827,7 +12891,7 @@ var normalizeComponent_1 = normalizeComponent;
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vue-editor-js"}},[_c('div',{attrs:{"id":_vm.holderId}}),_vm._v(" "),_c('button',{staticStyle:{"display":"none"},attrs:{"id":_vm.saveButtonId},on:{"click":_vm.save}},[_vm._v("Save")])])};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"vue-editor-js"}},[_c('div',{attrs:{"id":_vm.holderId}}),_vm._v(" "),_c('button',{staticStyle:{"display":"none"},attrs:{"id":(_vm.holderId + "-button")},on:{"click":_vm.save}})])};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -12844,7 +12908,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  var Editor = normalizeComponent_1(
+  var EditorComponent = normalizeComponent_1(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -12855,19 +12919,28 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var version = '0.0.3';
-
-var install = function install(Vue) {
-  Vue.component('Editor', Editor);
-};
-
+var version = '0.3.0';
+function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component('Editor', EditorComponent);
+}
 var plugin = {
   install: install,
   version: version
 };
+var Editor = EditorComponent;
+var GlobalVue = null;
 
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(plugin);
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue;
+}
+
+if (GlobalVue) {
+  GlobalVue.use(plugin);
 }
 
 export default plugin;
+export { Editor, install };
