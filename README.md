@@ -4,13 +4,9 @@ vue-editor-js is editorjs wrapper component.
 
 Please see this first. https://editorjs.io/
 
-## Todo
+## For before 1.0.0 version users.
 
-- [ ] Documentation
-- [x] Sanitize data
-- [x] Conditionally import plugins
-- [x] Can more specific options for plugin (Image plugin is not working in current :<)
-- [x] Custom Plugin - Thanks @yashha
+Please `Vue.use` vue-editor-js  in main.js.
 
 ## Supported Plugins
 
