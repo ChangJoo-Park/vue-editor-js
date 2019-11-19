@@ -4,13 +4,9 @@ vue-editor-js is editorjs wrapper component.
 
 Please see this first. https://editorjs.io/
 
-## Todo
+## For before 1.0.0 version users.
 
-- [ ] Sanitize data
-- [ ] Documentation
-- [x] Conditionally import plugins
-- [x] Can more specific options for plugin (Image plugin is not working in current :<)
-- [x] Custom Plugin - Thanks @yashha
+Please `Vue.use` vue-editor-js  in main.js.
 
 ## Supported Plugins
 
@@ -51,33 +47,6 @@ Vue.use(Editor)
 ```
 
 ```js
-// In component
-// ...
-import { Editor } from 'vue-editor-js'
-
-export default {
-  components: {
-    Editor,
-  }
-}
-// ...
-```
-
-```Vue
-  <editor
-    autofocus
-    holder-id="codex-editor"
-    save-button-id="save-button"
-    :init-data="initData"
-    @save="save"
-    @ready="onReady"
-    @change="onChange"
-  />
-```
-
----
-
-```js
 // on Nuxt.js
 
 // in nuxt.config.js
@@ -92,13 +61,22 @@ import Vue from 'vue'
 import Editor from 'vue-editor-js'
 
 Vue.use(Editor)
-
-// in your page
-<editor />
-
 ```
 
-If you confuse, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
+```Vue
+  <editor
+    autofocus
+    holder-id="codex-editor"
+    save-button-id="save-button"
+    :init-data="initData"
+    @save="save"
+    @ready="onReady"
+    @change="onChange"
+  />
+```
+
+
+If you confused using on Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
 ### Other props:
 - customTools - Object with name (key) and class of a custom tool (value)

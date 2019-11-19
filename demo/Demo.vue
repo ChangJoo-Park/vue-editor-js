@@ -3,6 +3,7 @@
     <button @click="save">Save & Log</button>
     <button @click="load">Load</button>
     <button @click="loadData">Load Example</button>
+    <h1 style="text-align: center;">DEMO</h1>
     <editor
       :autofocus="true"
       :init-data="initData"
@@ -15,13 +16,8 @@
 </template>
 
 <script>
-// Import as component
-import { Editor } from '../src' // import { Editor } from 'vue-editor-js'
 
 export default {
-  components: {
-    Editor,
-  },
   data () {
     return {
       initData: {},
