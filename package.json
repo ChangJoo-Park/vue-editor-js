@@ -50,6 +50,7 @@
     "@editorjs/raw": "^2.1.1",
     "@editorjs/table": "^1.2.0",
     "@editorjs/warning": "^1.1.1",
+    "@vue/composition-api": "^0.3.2",
     "core-js": "^3.1.4"
   },
   "devDependencies": {
