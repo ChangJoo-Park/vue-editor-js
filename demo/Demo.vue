@@ -32,9 +32,6 @@ export default {
             types: 'image/*',
           }
         },
-        config: {
-          placeholder: 'Enter a header'
-        }
       }
     }
   },
