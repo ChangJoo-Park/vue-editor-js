@@ -36,15 +36,19 @@ export const PLUGINS = {
   checklist: require('@editorjs/checklist')
 }
 
-export function useTools (props) {
+export function useTools (props, config) {
   const pluginKeys = Object.keys(PLUGINS)
   const tools = { ...props.customTools }
-
   /**
    * When plugin props are empty, enable all plugins
    */
   if (pluginKeys.every(p => !props[p])) {
     pluginKeys.forEach(key => tools[key] = { class: PLUGINS[key] })
+    Object.keys(config).forEach(key => {
+      if (!!tools[key]) {
+        tools[key]['config'] = config[key]
+      }
+    })
     return tools
   }
 

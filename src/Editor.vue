@@ -29,6 +29,7 @@ export default createComponent({
     autofocus: DEFAULT_BOOLEAN_PROP,
     initData: DEFAULT_OBJECT_PROP,
     customTools: DEFAULT_OBJECT_PROP,
+    config: DEFAULT_OBJECT_PROP,
     ...PLUGIN_PROPS.map(_ => PLUGIN_PROPS_TYPE),
   },
   setup: (props, context) => {
@@ -37,12 +38,15 @@ export default createComponent({
     function initEditor (props) {
       destroyEditor()
 
-      const { holderId: holder, autofocus, initData: data } = props
+      const { holderId: holder, autofocus, initData: data, config } = props
+      console.log(config)
+      const tools = useTools(props, config)
+
       state.editor = new EditorJS({
         holder,
         autofocus,
         data,
-        tools: useTools(props),
+        tools,
         onReady: () => context.emit('ready'),
         onChange: () => context.emit('change')
       })

@@ -7,6 +7,7 @@
     <editor
       :autofocus="true"
       :init-data="initData"
+      :config="config"
       ref="editor"
       @save="onSave"
       @ready="onReady"
@@ -21,7 +22,20 @@ export default {
   data () {
     return {
       initData: {},
-      savedData: {}
+      savedData: {},
+      config: {
+        image: {
+          endpoints: {
+            byFile: 'http://localhost:8090/image',
+            byUrl: 'http://localhost:8090/image-by-url',
+            field: 'image',
+            types: 'image/*',
+          }
+        },
+        config: {
+          placeholder: 'Enter a header'
+        }
+      }
     }
   },
   methods: {
