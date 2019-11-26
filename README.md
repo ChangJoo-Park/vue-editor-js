@@ -78,6 +78,35 @@ Vue.use(Editor)
 
 If you confused using on Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
+## Upload Image
+
+for upload image, You need a backend for processing image. vue-editor-js provide special `config` props for easy.
+If you server for test upload image, please see [server example](https://github.com/ChangJoo-Park/vue-editor-js-imageserver).
+
+```vue
+<editor :config="config" />
+
+<script>
+...
+data() {
+  return {
+      config: {
+        image: {
+          endpoints: {
+            byFile: 'http://localhost:8090/image',
+            byUrl: 'http://localhost:8090/image-by-url',
+            field: 'image',
+            types: 'image/*',
+          }
+        },
+      }
+  }
+}
+</script>
+```
+
+![](https://user-images.githubusercontent.com/1451365/69627876-d7ca9600-108e-11ea-85c7-1e52c4284758.png)
+
 ### Other props:
 - customTools - Object with name (key) and class of a custom tool (value)
 
