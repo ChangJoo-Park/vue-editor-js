@@ -78,7 +78,7 @@ Vue.use(Editor)
 
 If you confused using on Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
-## Upload Image
+## Upload Image (>= 1.1.0)
 
 for upload image, You need a backend for processing image. vue-editor-js provide special `config` props for easy.
 If you server for test upload image, please see [server example](https://github.com/ChangJoo-Park/vue-editor-js-imageserver).
