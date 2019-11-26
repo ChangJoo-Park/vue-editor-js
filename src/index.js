@@ -1,6 +1,6 @@
 const version = '__VERSION__'
 import VueCompositionApi from '@vue/composition-api';
-import EditorComponent from './editor.vue'
+import EditorComponent from './Editor.vue'
 
 export function install(Vue) {
   if (install.installed) return;
