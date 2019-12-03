@@ -67,5 +67,11 @@ export function useTools (props, config) {
     }
   })
 
+  Object.keys(config).forEach(key => {
+    if (!!tools[key]) {
+      tools[key]['config'] = config[key]
+    }
+  })
+
   return tools
 }
