@@ -30,7 +30,7 @@ export default createComponent({
     initData: DEFAULT_OBJECT_PROP,
     customTools: DEFAULT_OBJECT_PROP,
     config: DEFAULT_OBJECT_PROP,
-    ...PLUGIN_PROPS.map(_ => PLUGIN_PROPS_TYPE),
+    ...PLUGIN_PROPS.reduce((a, pluginName) => ({...a, [pluginName]: PLUGIN_PROPS_TYPE}), {}),
   },
   setup: (props, context) => {
     const state = reactive({ editor: null })
