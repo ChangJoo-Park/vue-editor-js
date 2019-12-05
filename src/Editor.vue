@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import { createComponent, reactive, onMounted, watch, createElement } from '@vue/composition-api'
+import { createComponent, reactive, onMounted, watch } from '@vue/composition-api'
 import EditorJS from '@editorjs/editorjs'
 import {
   DEFAULT_OBJECT_PROP,
   DEFAULT_BOOLEAN_PROP,
   PLUGIN_PROPS_TYPE,
   PLUGIN_PROPS,
-  PLUGINS,
   useTools
 } from './utils'
 
