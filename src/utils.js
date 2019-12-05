@@ -45,7 +45,7 @@ export function useTools (props, config) {
   if (pluginKeys.every(p => !props[p])) {
     pluginKeys.forEach(key => tools[key] = { class: PLUGINS[key] })
     Object.keys(config).forEach(key => {
-      if (!!tools[key]) {
+      if (tools[key] !== undefined && tools[key] !== null) {
         tools[key]['config'] = config[key]
       }
     })
