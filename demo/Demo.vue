@@ -28,9 +28,9 @@ export default {
           endpoints: {
             byFile: 'http://localhost:8090/image',
             byUrl: 'http://localhost:8090/image-by-url',
-            field: 'image',
-            types: 'image/*',
-          }
+          },
+          field: 'image',
+          types: 'image/*',
         },
       }
     }
