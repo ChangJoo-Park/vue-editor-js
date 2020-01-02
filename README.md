@@ -99,7 +99,7 @@ Vue.use(VueCompositionApi)
 3. Don't import anything from `'vue-editor-js'` in main.js
 4. In your component:
 ```js
-import { Editor } from 'vue-editor-js/src'
+import { Editor } from 'vue-editor-js'
 
 export default {
   // ...
