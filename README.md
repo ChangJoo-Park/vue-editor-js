@@ -78,6 +78,38 @@ Vue.use(Editor)
 
 If you confused using on Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
+## Local import
+
+You can import Editor only in components where you need it.
+
+1. Make sure to install `@vue/composition-api`
+```bash
+npm i --save @vue/composition-api
+
+#or Yarn
+yarn add @vue/composition-api
+```
+2. In main.js:
+```js
+import Vue from 'vue'
+import VueCompositionApi from '@vue/composition-api'
+
+Vue.use(VueCompositionApi)
+```
+3. Don't import anything from `'vue-editor-js'` in main.js
+4. In your component:
+```js
+import { Editor } from 'vue-editor-js'
+
+export default {
+  // ...
+  components: {
+    Editor,
+  },
+  // ...
+}
+```
+
 ## Upload Image (>= 1.1.0)
 
 for upload image, You need a backend for processing image. vue-editor-js provide special `config` props for easy.
