@@ -112,6 +112,7 @@ export default {
 
 ## Tools
 ### Supported tools
+Same as in Supported Plugins, but with different naming
 - header
 - list
 - code
