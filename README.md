@@ -110,6 +110,28 @@ export default {
 }
 ```
 
+## Tools
+### Supported tools
+- header
+- list
+- code
+- inlineCode
+- embed
+- linkTool
+- marker
+- table
+- raw
+- delimiter
+- quote
+- image
+- warning
+- paragraph
+- checklist
+### Usage
+```vue
+<editor header list code ... :config="config"/>
+```
+
 ## Upload Image (>= 1.1.0)
 
 for upload image, You need a backend for processing image. vue-editor-js provide special `config` props for easy.
