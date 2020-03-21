@@ -6,7 +6,7 @@ export const DEFAULT_OBJECT_PROP = {
 
 export const DEFAULT_STRING_PROP = {
   type: String,
-  default: () => {},
+  default: () => "",
   required: false
 }
 
