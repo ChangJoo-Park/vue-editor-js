@@ -22,7 +22,7 @@ export const PLUGIN_PROPS_TYPE = {
   required: false
 }
 
-export const PLUGIN_PROPS = ['header', 'list', 'code', 'inlineCode', 'embed', 'link', 'marker', 'table', 'raw', 'delimiter', 'quote', 'image', 'warning', 'paragraph', 'checklist']
+export const PLUGIN_PROPS = ['header', 'list', 'code', 'inlineCode', 'embed', 'linkTool', 'marker', 'table', 'raw', 'delimiter', 'quote', 'image', 'warning', 'paragraph', 'checklist']
 
 export const PLUGINS = {
   header: require('@editorjs/header'),
@@ -33,7 +33,7 @@ export const PLUGINS = {
   quote: require('@editorjs/quote'),
   marker: require('@editorjs/marker'),
   code: require('@editorjs/code'),
-  link: require('@editorjs/link'),
+  linkTool: require('@editorjs/link'),
   delimiter: require('@editorjs/delimiter'),
   raw: require('@editorjs/raw'),
   table: require('@editorjs/table'),
