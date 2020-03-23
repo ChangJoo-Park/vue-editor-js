@@ -4,6 +4,12 @@ export const DEFAULT_OBJECT_PROP = {
   required: false
 }
 
+export const DEFAULT_STRING_PROP = {
+  type: String,
+  default: () => "",
+  required: false
+}
+
 export const DEFAULT_BOOLEAN_PROP = {
   type: Boolean,
   default: () => false,

@@ -13,6 +13,7 @@ import {
   DEFAULT_BOOLEAN_PROP,
   PLUGIN_PROPS_TYPE,
   PLUGIN_PROPS,
+  DEFAULT_STRING_PROP,
   useTools
 } from './utils'
 
@@ -25,6 +26,7 @@ export default createComponent({
       default: () => 'codex-editor',
       required: false
     },
+    placeholder: DEFAULT_STRING_PROP,
     autofocus: DEFAULT_BOOLEAN_PROP,
     initData: DEFAULT_OBJECT_PROP,
     customTools: DEFAULT_OBJECT_PROP,
@@ -37,13 +39,14 @@ export default createComponent({
     function initEditor (props) {
       destroyEditor()
 
-      const { holderId: holder, autofocus, initData: data, config } = props
+      const { holderId: holder, autofocus, initData: data, config, placeholder } = props
       console.log(config)
       const tools = useTools(props, config)
 
       state.editor = new EditorJS({
         holder,
         autofocus,
+        placeholder,
         data,
         tools,
         onReady: () => context.emit('ready'),
