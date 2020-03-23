@@ -9,6 +9,7 @@
       :init-data="initData"
       :config="config"
       ref="editor"
+      placeholder="test"
       @save="onSave"
       @ready="onReady"
       @change="onChange"
