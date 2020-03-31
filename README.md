@@ -10,6 +10,7 @@ Please `Vue.use` vue-editor-js  in main.js.
 
 ## Supported Plugins
 
+- [Personality](https://github.com/editor-js/personality)
 - [Header](https://github.com/editor-js/header)
 - [List](https://github.com/editor-js/list)
 - [Image](https://github.com/editor-js/image)
@@ -117,6 +118,7 @@ Same as in Supported Plugins, but with different naming
 - list
 - code
 - inlineCode
+- personality
 - embed
 - linkTool
 - marker
@@ -159,6 +161,15 @@ data() {
   }
 }
 </script>
+```
+
+## upload personality avatar ( >= 2.0.1)
+
+```js 
+  config: {
+    personality: {
+      endpoints: 'http://localhost:8090/image'
+    }
 ```
 
 ![](https://user-images.githubusercontent.com/1451365/69627876-d7ca9600-108e-11ea-85c7-1e52c4284758.png)

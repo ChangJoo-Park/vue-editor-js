@@ -33,12 +33,7 @@ export default {
           types: "image/*"
         },
         personality: {
-          endpoint: {
-            byFile: "http://39.105.168.171:8090/image",
-            byUrl: "http://39.105.168.171:8090/image-by-url"
-          },
-          field: "image",
-          types: "image/*"
+          endpoint: "http://39.105.168.171:8090/image"
         }
       }
     };
