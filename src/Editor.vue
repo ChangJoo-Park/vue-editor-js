@@ -1,5 +1,5 @@
 <template>
-  <div id="vue-editor-js">
+  <div id="vue-editor-js" :style="{height: minHeight+'px',background: bgColor}">
     <div :id="props.holderId"/>
     <button :id="`${props.holderId}-button`" @click="save" style="display: none;"/>
   </div>
@@ -21,6 +21,14 @@ import {
 export default createComponent({
   name: 'vue-editor-js',
   props: {
+    minHeight:{
+      type:Number,
+      default:()=>900
+    },
+    bgColor:{
+      type:String,
+      default:()=>'rgba(255,255,255,.6)'
+    },
     holderId: {
       type: String,
       default: () => 'codex-editor',

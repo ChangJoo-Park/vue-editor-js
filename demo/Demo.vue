@@ -8,6 +8,8 @@
       :autofocus="true"
       :init-data="initData"
       :config="config"
+      :minHeight="700"
+      :bgColor="'yellow'"
       ref="editor"
       placeholder="test"
       @save="onSave"

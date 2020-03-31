@@ -69,6 +69,8 @@ Vue.use(Editor)
     autofocus
     holder-id="codex-editor"
     save-button-id="save-button"
+    :minHeight="700"
+    :bgColor="'yellow'"
     :init-data="initData"
     @save="save"
     @ready="onReady"
