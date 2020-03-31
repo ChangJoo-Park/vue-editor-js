@@ -39,7 +39,7 @@
     "@editorjs/checklist": "^1.1.0",
     "@editorjs/code": "^2.4.1",
     "@editorjs/delimiter": "^1.1.0",
-    "@editorjs/editorjs": "^2.16.1",
+    "@editorjs/editorjs": "^2.17.0",
     "@editorjs/embed": "^2.2.1",
     "@editorjs/header": "^2.3.2",
     "@editorjs/image": "^2.3.3",
@@ -52,6 +52,7 @@
     "@editorjs/raw": "^2.1.1",
     "@editorjs/table": "^1.2.0",
     "@editorjs/warning": "^1.1.1",
+    "@editorjs/personality": "^2.0.1",
     "@vue/composition-api": "^0.3.4",
     "core-js": "^3.5.0"
   },
