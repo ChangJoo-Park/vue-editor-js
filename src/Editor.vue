@@ -7,7 +7,7 @@
 
 <script>
 import {
-  createComponent,
+  defineComponent,
   reactive,
   onMounted,
   watch
@@ -22,7 +22,7 @@ import {
   useTools
 } from './utils'
 
-export default createComponent({
+export default defineComponent({
   name: 'vue-editor-js',
   props: {
     editorId: {
