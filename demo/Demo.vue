@@ -5,6 +5,7 @@
     <button @click="loadData">Load Example</button>
     <h1 style="text-align: center;">DEMO</h1>
     <editor
+      id='vue-editor-js'
       :autofocus="true"
       :init-data="initData"
       :config="config"

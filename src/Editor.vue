@@ -1,5 +1,5 @@
 <template>
-  <div id="vue-editor-js">
+  <div>
     <div :style="{minHeight: minHeight+'px',background: bgColor}" :id="props.holderId" />
     <button :id="`${props.holderId}-button`" @click="save" style="display: none;" />
   </div>
@@ -25,6 +25,10 @@ import {
 export default createComponent({
   name: 'vue-editor-js',
   props: {
+    editorId: {
+      type: String,
+      default: () => 'vue-editor-js'
+    },
     minHeight: {
       type: Number,
       default: () => 800
