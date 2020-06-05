@@ -1,78 +1,44 @@
 <template>
-  <div id="vue-editor-js">
-    <div :style="{minHeight: minHeight+'px',background: bgColor}" :id="props.holderId" />
-    <button :id="`${props.holderId}-button`" @click="save" style="display: none;" />
-  </div>
+  <div :id="holder" />
 </template>
 
 <script>
 import {
-  createComponent,
   reactive,
   onMounted,
-  watch
+  watch,
+  defineComponent
 } from '@vue/composition-api'
 import EditorJS from '@editorjs/editorjs'
-import {
-  DEFAULT_OBJECT_PROP,
-  DEFAULT_BOOLEAN_PROP,
-  PLUGIN_PROPS_TYPE,
-  PLUGIN_PROPS,
-  DEFAULT_STRING_PROP,
-  useTools
-} from './utils'
 
-export default createComponent({
+export default defineComponent({
   name: 'vue-editor-js',
   props: {
-    minHeight: {
-      type: Number,
-      default: () => 800
-    },
-    bgColor: {
+    holder: {
       type: String,
-      default: () => 'rgba(255,255,255,.6)'
+      default: () => 'vue-editor-js',
+      require: true
     },
-    holderId: {
-      type: String,
-      default: () => 'codex-editor',
-      required: false
+    config: {
+      type: Object,
+      default: () => ({}),
+      require: true
     },
-    placeholder: DEFAULT_STRING_PROP,
-    autofocus: DEFAULT_BOOLEAN_PROP,
-    initData: DEFAULT_OBJECT_PROP,
-    customTools: DEFAULT_OBJECT_PROP,
-    config: DEFAULT_OBJECT_PROP,
-    ...PLUGIN_PROPS.reduce(
-      (a, pluginName) => ({ ...a, [pluginName]: PLUGIN_PROPS_TYPE }),
-      {}
-    )
+    initialized: {
+      type: Function,
+      default: () => {}
+    }
   },
   setup: (props, context) => {
     const state = reactive({ editor: null })
 
     function initEditor(props) {
       destroyEditor()
-
-      const {
-        holderId: holder,
-        autofocus,
-        initData: data,
-        config,
-        placeholder
-      } = props
-      console.log(config)
-      const tools = useTools(props, config)
-
       state.editor = new EditorJS({
-        holder,
-        autofocus,
-        placeholder,
-        data,
-        tools,
-        onReady: () => context.emit('ready'),
-        onChange: () => context.emit('change')
+        holder: 'vue-editor-js',
+        ...props.config
       })
+      props.initialized(state.editor)
     }
 
     function destroyEditor() {
@@ -82,25 +48,9 @@ export default createComponent({
       }
     }
 
-    function save() {
-      if (!state.editor) {
-        return
-      }
-
-      state.editor
-        .save()
-        .then(result => context.emit('save', result))
-        .catch(err => console.error(err))
-    }
-
     onMounted(_ => initEditor(props))
 
-    watch(
-      _ => props.initData,
-      _ => initEditor
-    )
-
-    return { props, state, save }
+    return { props, state }
   }
 })
 </script>
