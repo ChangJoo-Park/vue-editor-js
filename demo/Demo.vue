@@ -8,6 +8,8 @@
       :autofocus="true"
       :init-data="initData"
       :config="config"
+      :minHeight="700"
+      :bgColor="'yellow'"
       ref="editor"
       placeholder="test"
       @save="onSave"
@@ -18,48 +20,51 @@
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {
       initData: {},
       savedData: {},
       config: {
         image: {
           endpoints: {
-            byFile: 'http://localhost:8090/image',
-            byUrl: 'http://localhost:8090/image-by-url',
+            byFile: "http://39.105.168.171:8090/image",
+            byUrl: "http://39.105.168.171:8090/image-by-url"
           },
-          field: 'image',
-          types: 'image/*',
+          field: "image",
+          types: "image/*"
         },
+        personality: {
+          endpoint: "http://39.105.168.171:8090/image"
+        }
       }
-    }
+    };
   },
   methods: {
-    save () {
+    save() {
       this.$refs.editor.save();
     },
-    load () {
+    load() {
       this.initData = this.savedData;
     },
-    loadData () {
-      this.initData = JSON.parse('{"time":1558356864490,"blocks":[{"type":"paragraph","data":{"text":"First text"}},{"type":"paragraph","data":{"text":"Second text"}}],"version":"2.13"}');
+    loadData() {
+      this.initData = JSON.parse(
+        '{"time":1558356864490,"blocks":[{"type":"paragraph","data":{"text":"First text"}},{"type":"paragraph","data":{"text":"Second text"}}],"version":"2.13"}'
+      );
     },
-    onSave (response) {
-      console.log(JSON.stringify(response))
+    onSave(response) {
+      console.log(JSON.stringify(response));
       this.savedData = response;
     },
-    onReady () {
-      console.log('ready')
+    onReady() {
+      console.log("ready");
     },
-    onChange () {
-      console.log('changed')
+    onChange() {
+      console.log("changed");
     }
   }
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -22,12 +22,13 @@ export const PLUGIN_PROPS_TYPE = {
   required: false
 }
 
-export const PLUGIN_PROPS = ['header', 'list', 'code', 'inlineCode', 'embed', 'linkTool', 'marker', 'table', 'raw', 'delimiter', 'quote', 'image', 'warning', 'paragraph', 'checklist']
+export const PLUGIN_PROPS = ['header','personality', 'list', 'code', 'inlineCode', 'embed', 'linkTool', 'marker', 'table', 'raw', 'delimiter', 'quote', 'image', 'warning', 'paragraph', 'checklist']
 
 export const PLUGINS = {
   header: require('@editorjs/header'),
   list: require('@editorjs/list'),
   image: require('@editorjs/image'),
+  personality:require('@editorjs/personality'),
   inlineCode: require('@editorjs/inline-code'),
   embed: require('@editorjs/embed'),
   quote: require('@editorjs/quote'),
