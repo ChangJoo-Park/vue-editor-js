@@ -4,6 +4,14 @@ vue-editor-js is editorjs wrapper component.
 
 Please see this first. https://editorjs.io/
 
+## For before 2.0.0 version users.
+
+This plugins is turned to be just wrapper component.
+If you need to use plugin for editor.js, just import and set to config property.
+
+Please See the [Demo.vue](https://github.com/ChangJoo-Park/vue-editor-js/blob/master/demo/Demo.vue)
+
+
 ## For before 1.0.0 version users.
 
 Please `Vue.use` vue-editor-js  in main.js.
@@ -65,19 +73,10 @@ Vue.use(Editor)
 ```
 
 ```Vue
-  <editor
-    autofocus
-    holder-id="codex-editor"
-    save-button-id="save-button"
-    :minHeight="700"
-    :bgColor="'yellow'"
-    :init-data="initData"
-    @save="save"
-    @ready="onReady"
-    @change="onChange"
-  />
+  <editor ref="editor" :config="config" :initialized="onInitialized"/>
 ```
 
+define initialize Function for get instance of editor.js when initialized
 
 If you confused using on Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
@@ -132,6 +131,8 @@ Same as in Supported Plugins, but with different naming
 - warning
 - paragraph
 - checklist
+
+
 ### Usage
 ```vue
 <editor header list code ... :config="config"/>
@@ -167,7 +168,7 @@ data() {
 
 ## upload personality avatar ( >= 2.0.1)
 
-```js 
+```js
   config: {
     personality: {
       endpoints: 'http://localhost:8090/image'
