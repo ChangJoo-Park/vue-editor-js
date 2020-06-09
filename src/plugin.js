@@ -13,4 +13,4 @@ Vue.use(plugin)
  *   If you want Vue instance of main.js to import something in your plugin as a Vue option,
  *   you need to export it here.
  */
-// export default plugin
+export default plugin
