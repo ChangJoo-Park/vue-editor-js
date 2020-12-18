@@ -1,5 +1,8 @@
 # vue-editor-js
 
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=for-the-badge&logo=github)](https://wallabyjs.com/oss/)
+
+
 vue-editor-js is editorjs wrapper component.
 
 Please see this first. https://editorjs.io/
@@ -197,3 +200,13 @@ _OR_
 - [ChangJoo Park](https://github.com/changjoo-park)
 - [yashha](https://github.com/yashha)
 - [Loskir](https://github.com/Loskir)
+
+
+## Wallaby.js
+
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=for-the-badge&logo=github)](https://wallabyjs.com/oss/)
+
+This repository contributors are welcome to use
+[Wallaby.js OSS License](https://wallabyjs.com/oss/) to get
+test results immediately as you type, and see the results in
+your editor right next to your code.
