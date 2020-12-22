@@ -35,7 +35,7 @@ export default defineComponent({
     function initEditor(props) {
       destroyEditor()
       state.editor = new EditorJS({
-        holder: 'vue-editor-js',
+        holder: props.holder || 'vue-editor-js',
         ...props.config
       })
       props.initialized(state.editor)
