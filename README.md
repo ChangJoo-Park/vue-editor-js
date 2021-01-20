@@ -138,8 +138,28 @@ Same as in Supported Plugins, but with different naming
 
 
 ### Usage
+
+1. Install the editorjs tool
+
+```bash
+# NPM
+npm install --save @editorjs/header
+
+# or Yarn
+yarn add @editorjs/header
+```
+
+2. Insert the package into the config prop
+
 ```vue
-<editor header list code ... :config="config"/>
+<editor
+    ...
+    :config="{
+        tools: {
+          header: require('@editorjs/header')
+        }
+    }"
+/>
 ```
 
 ## Upload Image (>= 1.1.0)
