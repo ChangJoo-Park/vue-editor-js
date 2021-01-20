@@ -162,6 +162,32 @@ yarn add @editorjs/header
 />
 ```
 
+#### Saving Example Code
+```vue
+<template>
+	<div id="app">
+		<Editor ref="editor" :config="config" />
+
+		<button @click="invokeSave">Save</button>
+	</div>
+</template>
+
+<script>
+	export default {
+		methods: {
+			invokeSave() {
+				this.$refs.editor._data.state.editor.save()
+					.then((data) => {
+						// Do what you want with the data here
+						console.log(data)
+					})
+					.catch(err => { console.log(err) })
+			}
+		},
+	}
+</script>
+```
+
 ## Upload Image (>= 1.1.0)
 
 for uploading images, You will need a backend for processing the images. vue-editor-js provides a special `config` prop for easability.
