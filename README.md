@@ -5,19 +5,19 @@
 
 vue-editor-js is editorjs wrapper component.
 
-Please see this first. https://editorjs.io/
+Please review this first. https://editorjs.io/
 
 ## For before 2.0.0 version users.
 
-This plugins is turned to be just wrapper component.
-If you need to use plugin for editor.js, just import and set to config property.
+This plugins is a wrapper component for editorjs.
+If you need to use the plugin for editor.js then import it and set the config property.
 
 Please See the [Demo.vue](https://github.com/ChangJoo-Park/vue-editor-js/blob/master/demo/Demo.vue)
 
 
 ## For before 1.0.0 version users.
 
-Please `Vue.use` vue-editor-js  in main.js.
+Please use `Vue.use` vue-editor-js in main.js.
 
 ## Supported Plugins
 
@@ -41,6 +41,7 @@ Please `Vue.use` vue-editor-js  in main.js.
 ## Installation
 
 ```bash
+# NPM
 npm install --save vue-editor-js
 
 # or Yarn
@@ -49,8 +50,8 @@ yarn add vue-editor-js
 
 ## Usage
 
+### In main.js
 ```js
-// In main.js
 // ...
 import Editor from 'vue-editor-js'
 
@@ -58,9 +59,8 @@ Vue.use(Editor)
 // ...
 ```
 
+### In Nuxt.js
 ```js
-// on Nuxt.js
-
 // in nuxt.config.js
 plugins: [
   {
@@ -79,19 +79,20 @@ Vue.use(Editor)
   <editor ref="editor" :config="config" :initialized="onInitialized"/>
 ```
 
-define initialize Function for get instance of editor.js when initialized
+Define the initialization function to get the instance of editor.js when initializing
 
-If you confused using on Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
+If you are confused with using it with Nuxt, please see [here](https://github.com/ChangJoo-Park/vue-editor-on-nuxt)
 
 ## Local import
 
-You can import Editor only in components where you need it.
+If you wish to only import Editor on a single component then you can do so by following the instructions below
 
 1. Make sure to install `@vue/composition-api`
 ```bash
+# NPM
 npm i --save @vue/composition-api
 
-#or Yarn
+# or Yarn
 yarn add @vue/composition-api
 ```
 2. In main.js:
@@ -137,14 +138,60 @@ Same as in Supported Plugins, but with different naming
 
 
 ### Usage
+
+1. Install the editorjs tool
+
+```bash
+# NPM
+npm install --save @editorjs/header
+
+# or Yarn
+yarn add @editorjs/header
+```
+
+2. Insert the package into the config prop
+
 ```vue
-<editor header list code ... :config="config"/>
+<editor
+    ...
+    :config="{
+        tools: {
+          header: require('@editorjs/header')
+        }
+    }"
+/>
+```
+
+#### Saving Example Code
+```vue
+<template>
+	<div id="app">
+		<Editor ref="editor" :config="config" />
+
+		<button @click="invokeSave">Save</button>
+	</div>
+</template>
+
+<script>
+	export default {
+		methods: {
+			invokeSave() {
+				this.$refs.editor._data.state.editor.save()
+					.then((data) => {
+						// Do what you want with the data here
+						console.log(data)
+					})
+					.catch(err => { console.log(err) })
+			}
+		},
+	}
+</script>
 ```
 
 ## Upload Image (>= 1.1.0)
 
-for upload image, You need a backend for processing image. vue-editor-js provide special `config` props for easy.
-If you server for test upload image, please see [server example](https://github.com/ChangJoo-Park/vue-editor-js-imageserver).
+for uploading images, You will need a backend for processing the images. vue-editor-js provides a special `config` prop for easability.
+If you are testing your server to upload an image, please see [server example](https://github.com/ChangJoo-Park/vue-editor-js-imageserver).
 
 ```vue
 <editor :config="config" />
