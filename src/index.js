@@ -1,18 +1,7 @@
-import EditorComponent from './Editor.vue'
+import Editor from './Editor.vue';
 
-export function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-
-  Vue.component('Editor', EditorComponent);
-}
-
-export function useEditorJS() {
-  const editorJSPlugin = {
-    install(app) {
-      app.component('Editor', EditorComponent);
-    },
-  };
-
-  return editorJSPlugin;
+export default {
+  install: (app) => {
+    app.component('Editor', Editor)
+  }
 }
