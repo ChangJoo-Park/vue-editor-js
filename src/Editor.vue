@@ -42,7 +42,7 @@ export default defineComponent({
       }
     }
 
-    onMounted((_) => initEditor(props));
+    onMounted(() => initEditor(props));
 
     return { props, state };
   },

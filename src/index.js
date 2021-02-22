@@ -1,10 +1,8 @@
 const version = '__VERSION__'
 import EditorComponent from './Editor.vue'
 
-export function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component('Editor', EditorComponent)
+export function install(app) {
+  app.component('Editor', EditorComponent);
 }
 
 const plugin = {
