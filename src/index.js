@@ -1,11 +1,9 @@
 const version = '__VERSION__'
-import VueCompositionApi from '@vue/composition-api';
 import EditorComponent from './Editor.vue'
 
 export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.use(VueCompositionApi)
   Vue.component('Editor', EditorComponent)
 }
 

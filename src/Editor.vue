@@ -3,54 +3,48 @@
 </template>
 
 <script>
-import {
-  reactive,
-  onMounted,
-  watch,
-  defineComponent
-} from '@vue/composition-api'
-import EditorJS from '@editorjs/editorjs'
+import { reactive, defineComponent, onMounted } from "vue-demi";
+import EditorJS from "@editorjs/editorjs";
 
 export default defineComponent({
-  name: 'vue-editor-js',
   props: {
     holder: {
       type: String,
-      default: () => 'vue-editor-js',
-      require: true
+      default: () => "vue-editor-js",
+      require: true,
     },
     config: {
       type: Object,
       default: () => ({}),
-      require: true
+      require: true,
     },
     initialized: {
       type: Function,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
-  setup: (props, context) => {
-    const state = reactive({ editor: null })
+  setup: (props) => {
+    const state = reactive({ editor: null });
 
     function initEditor(props) {
-      destroyEditor()
+      destroyEditor();
       state.editor = new EditorJS({
-        holder: props.holder || 'vue-editor-js',
-        ...props.config
-      })
-      props.initialized(state.editor)
+        holder: props.holder || "vue-editor-js",
+        ...props.config,
+      });
+      props.initialized(state.editor);
     }
 
     function destroyEditor() {
       if (state.editor) {
-        state.editor.destroy()
-        state.editor = null
+        state.editor.destroy();
+        state.editor = null;
       }
     }
 
-    onMounted(_ => initEditor(props))
+    onMounted((_) => initEditor(props));
 
-    return { props, state }
-  }
-})
+    return { props, state };
+  },
+});
 </script>
