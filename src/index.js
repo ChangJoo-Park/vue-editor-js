@@ -1,31 +1,62 @@
-const version = '__VERSION__'
-import VueCompositionApi from '@vue/composition-api';
-import EditorComponent from './Editor.vue'
+import { reactive, defineComponent, onMounted, h } from "vue-demi";
+import EditorJS from "@editorjs/editorjs";
 
-export function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.use(VueCompositionApi)
-  Vue.component('Editor', EditorComponent)
+export const Editor = defineComponent({
+  props: {
+    holder: {
+      type: String,
+      default: () => "vue-editor-js",
+      require: true,
+    },
+    config: {
+      type: Object,
+      default: () => ({}),
+      require: true,
+    },
+    initialized: {
+      type: Function,
+      default: () => {},
+    },
+  },
+  setup: (props) => {
+    const state = reactive({ editor: null });
+
+    function initEditor(props) {
+      destroyEditor();
+      state.editor = new EditorJS({
+        holder: props.holder || "vue-editor-js",
+        ...props.config,
+      });
+      props.initialized(state.editor);
+    }
+
+    function destroyEditor() {
+      if (state.editor) {
+        state.editor.destroy();
+        state.editor = null;
+      }
+    }
+
+    onMounted(() => {
+      console.log('on mounted')
+      initEditor(props)
+    });
+
+    return { props, state };
+  },
+  render(props) {
+    console.log('render')
+    return h(
+      'div',
+      {
+        id: props.holder
+      },
+    )
+  }
+});
+
+export default {
+  install (Vue) {
+    Vue.component('Editor', Editor)
+  }
 }
-
-const plugin = {
-  install,
-  version
-}
-
-export const Editor = EditorComponent
-
-let GlobalVue = null
-
-if (typeof window !== 'undefined') {
-  GlobalVue = window.Vue
-} else if (typeof global !== 'undefined') {
-  GlobalVue = global.Vue
-}
-
-if (GlobalVue) {
-  GlobalVue.use(plugin)
-}
-
-export default plugin
