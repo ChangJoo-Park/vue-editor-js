@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/changjoo-park/vue-editor-js/issues"
   },
-  "version": "2.1.3",
+  "version": "2.1.4",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
