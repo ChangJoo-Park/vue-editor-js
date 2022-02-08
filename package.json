@@ -13,12 +13,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/changjoo-park/vue-editor-js.git"
+    "url": "https://github.com/smeggingsmegger/vue-editor-js.git"
   },
   "bugs": {
-    "url": "https://github.com/changjoo-park/vue-editor-js/issues"
+    "url": "https://github.com/smeggingsmegger/vue-editor-js/issues"
   },
-  "version": "2.1.5",
+  "version": "2.2",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -37,41 +37,41 @@
     "src"
   ],
   "dependencies": {
-    "@editorjs/editorjs": "^2.19.1",
+    "@editorjs/editorjs": "latest",
     "vue-demi": "latest",
     "@vue/composition-api": "latest"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-beta.1",
-    "vue": "^2.0.0 || >=3.0.0-rc.0"
+    "@vue/composition-api": "latest",
+    "vue": "latest"
   },
   "devDependencies": {
-    "@editorjs/warning": "^1.2.0",
-    "@editorjs/checklist": "^1.3.0",
-    "@editorjs/code": "^2.6.0",
-    "@editorjs/delimiter": "^1.2.0",
-    "@editorjs/embed": "^2.4.0",
-    "@editorjs/header": "^2.6.1",
-    "@editorjs/image": "^2.6.0",
-    "@editorjs/inline-code": "^1.3.1",
-    "@editorjs/link": "^2.3.1",
-    "@editorjs/list": "^1.6.2",
-    "@editorjs/marker": "^1.2.2",
-    "@editorjs/paragraph": "^2.8.0",
-    "@editorjs/personality": "^2.0.2",
-    "@editorjs/quote": "^2.4.0",
-    "@editorjs/raw": "^2.3.0",
-    "@editorjs/simple-image": "^1.4.0",
-    "@editorjs/table": "^1.3.0",
-    "@vue/cli-plugin-babel": "^4.5.11",
-    "@vue/cli-plugin-eslint": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.20.0",
-    "eslint-plugin-vue": "^7.6.0",
-    "vue": "^2.6.12",
-    "vue-cli-plugin-p11n": "^0.4.0",
-    "vue-template-compiler": "^2.6.12"
+    "@editorjs/warning": "latest",
+    "@editorjs/checklist": "latest",
+    "@editorjs/code": "latest",
+    "@editorjs/delimiter": "latest",
+    "@editorjs/embed": "latest",
+    "@editorjs/header": "latest",
+    "@editorjs/image": "latest",
+    "@editorjs/inline-code": "latest",
+    "@editorjs/link": "latest",
+    "@editorjs/list": "latest",
+    "@editorjs/marker": "latest",
+    "@editorjs/paragraph": "latest",
+    "@editorjs/personality": "latest",
+    "@editorjs/quote": "latest",
+    "@editorjs/raw": "latest",
+    "@editorjs/simple-image": "latest",
+    "@editorjs/table": "latest",
+    "@vue/cli-plugin-babel": "latest",
+    "@vue/cli-plugin-eslint": "latest",
+    "@vue/cli-service": "latest",
+    "babel-eslint": "latest",
+    "eslint": "latest",
+    "eslint-plugin-vue": "latest",
+    "vue": "latest",
+    "vue-cli-plugin-p11n": "latest",
+    "vue-template-compiler": "latest"
   },
   "jsdelivr": "dist/vue-editor-js.umd.min.js",
   "sideeffects": false
